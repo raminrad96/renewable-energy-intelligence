@@ -36,6 +36,10 @@ The dataset contains:
 - Energy production exhibits strong seasonality.
 - Humidity exhibits a strong negative relationship with energy production and is the second strongest predictor identified through correlation analysis.
 - Correlation analysis identified GHI as the dominant predictor of energy production and revealed strong relationships among weather and sunlight-related variables.
+- A baseline Linear Regression model achieved an R² score of 0.857, demonstrating strong predictive performance using weather and temporal features.
+- A Random Forest model achieved an R² score of 0.9365, significantly outperforming the baseline Linear Regression model (R² = 0.8572).
+- Random Forest feature importance analysis showed that GHI accounts for approximately 85.8% of predictive importance, confirming it as the dominant driver of energy production.
+- Feature importance analysis revealed that GHI contributes approximately 85.8% of the Random Forest model's predictive importance.
 
 ## Technologies
 
