@@ -1,12 +1,14 @@
 # Renewable Energy Intelligence
 
-Renewable energy analytics and prediction using Python, data science, and machine learning.
+Renewable energy analytics and forecasting using Python, data science, and machine learning.
 
 ## Project Overview
 
-This project analyzes renewable energy generation data using Python and machine learning techniques.
+This project investigates the relationship between weather conditions, solar irradiance, and temporal factors on renewable energy production. Using exploratory data analysis (EDA) and machine learning techniques, the project identifies the key drivers of energy generation and develops predictive models capable of forecasting renewable energy output.
 
-The goal is to understand how weather conditions and seasonal factors influence energy production and to build predictive models for renewable energy generation.
+The objective is to understand how environmental conditions influence energy production and to evaluate the effectiveness of different machine learning algorithms for renewable energy forecasting.
+
+---
 
 ## Dataset
 
@@ -14,46 +16,131 @@ The dataset contains:
 
 * 196,776 observations
 * 17 variables
-* Weather information
-* Solar irradiance measurements
-* Energy generation data
+* Weather measurements
+* Solar irradiance information (GHI)
+* Sunlight-related variables
+* Renewable energy production data
 
-## Current Progress
+Key variables include:
 
-### Completed
+* GHI (Global Horizontal Irradiance)
+* Temperature
+* Humidity
+* Cloud Cover
+* Wind Speed
+* Rainfall
+* Snowfall
+* Day Length
+* Sunlight Time
+* Energy Production (Target Variable)
 
-* Project setup
-* Data loading and inspection
-* Initial exploratory data analysis
+---
 
-### Key Findings So Far
+## Exploratory Data Analysis
 
-- Approximately 51% of observations have zero energy production.
-- Energy production follows a clear daily cycle.
-- Cloud cover has a negative relationship with energy production.
-- GHI has a strong positive relationship with energy production.
-- GHI has the strongest correlation with energy production (0.915), making it the most promising predictor for future machine learning models.
-- Energy production exhibits strong seasonality.
-- Humidity exhibits a strong negative relationship with energy production and is the second strongest predictor identified through correlation analysis.
-- Correlation analysis identified GHI as the dominant predictor of energy production and revealed strong relationships among weather and sunlight-related variables.
-- A baseline Linear Regression model achieved an R² score of 0.857, demonstrating strong predictive performance using weather and temporal features.
-- A Random Forest model achieved an R² score of 0.9365, significantly outperforming the baseline Linear Regression model (R² = 0.8572).
-- Random Forest feature importance analysis showed that GHI accounts for approximately 85.8% of predictive importance, confirming it as the dominant driver of energy production.
-- Feature importance analysis revealed that GHI contributes approximately 85.8% of the Random Forest model's predictive importance.
+The exploratory analysis examined the impact of weather and temporal variables on energy production.
 
-## Technologies
+### Key Findings
+
+* Approximately 51% of observations have zero energy production.
+* Energy production follows a clear daily cycle, with peak generation occurring around midday.
+* Energy production exhibits strong seasonal patterns, with summer months producing substantially more energy than winter months.
+* Cloud cover negatively impacts energy generation.
+* Humidity exhibits a strong negative relationship with energy production.
+* Temperature is positively associated with energy production.
+* GHI shows the strongest relationship with energy production and is the most influential predictor.
+
+---
+
+## Machine Learning Models
+
+Three machine learning models were developed and evaluated:
+
+1. Linear Regression
+2. Random Forest Regressor
+3. XGBoost Regressor
+
+### Model Performance
+
+| Model             |    MAE |   RMSE |     R² |
+| ----------------- | -----: | -----: | -----: |
+| Linear Regression | 224.02 | 396.71 | 0.8572 |
+| Random Forest     | 106.02 | 264.56 | 0.9365 |
+| XGBoost           | 115.89 | 276.78 | 0.9305 |
+
+### Best Model
+
+The Random Forest model achieved the best overall performance:
+
+* R² = 0.9365
+* MAE = 106.02 Wh
+* RMSE = 264.56 Wh
+
+This indicates that the model successfully explains approximately 94% of the variation in renewable energy production.
+
+---
+
+## Feature Importance Analysis
+
+Feature importance analysis from the Random Forest model revealed that:
+
+* GHI contributes approximately 85.8% of total predictive importance.
+* Day Length is the second most important predictor.
+* Most remaining weather variables provide comparatively smaller contributions.
+
+These results confirm that solar irradiance is the dominant driver of renewable energy generation.
+
+---
+
+## Repository Structure
+
+```text
+renewable-energy-intelligence/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│   └── 01_data_understanding.ipynb
+│
+├── outputs/
+│   ├── figures/
+│   └── reports/
+│
+├── src/
+├── tests/
+│
+├── README.md
+└── LICENSE
+```
+
+---
+
+## Technologies Used
 
 * Python
 * Pandas
+* NumPy
 * Matplotlib
+* Scikit-Learn
+* XGBoost
 * Jupyter Notebook
 * Git
 * GitHub
 
-## Future Work
+---
 
-* Additional exploratory data analysis
-* Feature engineering
-* Machine learning model development
-* Model evaluation
-* Final project report
+## Conclusion
+
+This project demonstrates that renewable energy production can be accurately predicted using weather and temporal variables. Among the evaluated models, Random Forest achieved the highest predictive performance with an R² score of 0.9365. Feature importance analysis identified GHI (solar irradiance) as the dominant factor influencing renewable energy generation.
+
+---
+
+## Future Improvements
+
+* Hyperparameter tuning
+* Cross-validation
+* Additional forecasting models
+* Automated prediction pipeline
+* Deployment as a web application
